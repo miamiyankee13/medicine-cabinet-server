@@ -4,6 +4,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
+var ObjectID = require('mongodb').ObjectID;
+
 //Declare JSON parser
 const jsonParser = bodyParser.json();
 
@@ -30,11 +32,26 @@ router.get('/', (req, res) => {
 //GET route handler for /strains/:id
 //-find individual strain by id & send JSON response
 router.get('/:id', (req, res) => {
+console.log(  );
+    if(!ObjectID.isValid(req.params.id)){
+        res.status(400).json({ 
+            message: 'Bad ID',             
+        });
+    }
+
     Strain.findById(req.params.id).then(strain => {
+        if(!strain){
+            res.status(404).json({ 
+                message: 'ID not found',             
+            });
+        }
         res.json(strain.serialize());
     }).catch(err => {
         console.error(err);
-        res.status(500).json({ message: 'Internal server error' });
+        res.status(500).json({ 
+            message: 'Internal server error', 
+            originalMessage:err.toString(),
+        });
     });
 });
 
