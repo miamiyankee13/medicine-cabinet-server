@@ -31,7 +31,6 @@ router.get('/', (req, res) => {
 //GET route handler for /strains/:id
 //-find individual strain by id & send JSON response
 router.get('/:id', (req, res) => {
-console.log(  );
     if(!objectID.isValid(req.params.id)){
         res.status(400).json({ 
             message: 'Bad ID',             
