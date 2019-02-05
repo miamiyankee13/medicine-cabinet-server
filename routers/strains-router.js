@@ -3,8 +3,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-
-var ObjectID = require('mongodb').ObjectID;
+const objectID = require('mongodb').ObjectID;
 
 //Declare JSON parser
 const jsonParser = bodyParser.json();
@@ -33,7 +32,7 @@ router.get('/', (req, res) => {
 //-find individual strain by id & send JSON response
 router.get('/:id', (req, res) => {
 console.log(  );
-    if(!ObjectID.isValid(req.params.id)){
+    if(!objectID.isValid(req.params.id)){
         res.status(400).json({ 
             message: 'Bad ID',             
         });
@@ -48,10 +47,7 @@ console.log(  );
         res.json(strain.serialize());
     }).catch(err => {
         console.error(err);
-        res.status(500).json({ 
-            message: 'Internal server error', 
-            originalMessage:err.toString(),
-        });
+        res.status(500).json({ message: 'Internal server error' });
     });
 });
 
