@@ -38,7 +38,7 @@ userSchema.pre('find', function(next) {
 });
 
 userSchema.pre('findOne', function(next) {
-    // this.populate('strains'); // RSI
+    // this.populate('strains'); // NOTE! this breaks populate filtering
     next();
 });
 
