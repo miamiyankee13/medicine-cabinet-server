@@ -8,7 +8,7 @@ const passport = require('passport');
 const jsonParser = bodyParser.json();
 
 //Import modules
-const { User } = require('../models');
+const { User, Strain } = require('../models');
 
 //Create router instance
 const router = express.Router();
@@ -125,7 +125,25 @@ router.post('/', jsonParser, (req, res) => {
 //-find current user & return array of strains
 //-send JSON response
 router.get('/strains', jwtAuth, (req, res) => {
-    User.findOne({userName: req.user.userName}, "strains").then(result => {
+    User.findOne({userName: req.user.userName}, "strains")
+    .populate({
+        model: Strain,
+        path: 'strains'
+    }).then(result => {
+        res.status(200).json(result);
+    }).catch(err => {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error' });
+    });
+});
+
+router.get('/strains/:type', jwtAuth, (req, res) => {
+    User.findOne({userName: req.user.userName}, "strains")
+    .populate({
+        model: Strain,
+        path: 'strains',
+        match: { type: { $eq: req.params.type } }
+    }).then(result => {
         res.status(200).json(result);
     }).catch(err => {
         console.error(err);
