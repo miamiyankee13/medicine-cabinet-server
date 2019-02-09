@@ -85,7 +85,7 @@ describe('/users endpoints', function() {
 
     //Close server after tests tun
     after(function() {
-        return closeServer;
+        return closeServer();
     });
 
     //Tests for /users
