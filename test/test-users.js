@@ -252,55 +252,89 @@ describe('/users endpoints', function() {
         it('Should login, create a strain, & add a strain', function() {
             let strainId;
 
-            return createUserAndLogin().then(function(token) {
-                    return chai.request(app).post('/strains').set('authorization', `Bearer ${token}`).send({
-                        name: strainName, 
-                        type: strainType, 
-                        description: strainDesc, 
-                        flavor: strainFlavor}
-                        ).then(function(res) {
+            return createUserAndLogin()
+                .then(function(token) {
+                    return chai.request(app)
+                        .post('/strains')
+                        .set('authorization', `Bearer ${token}`)
+                        .send({
+                            name: strainName, 
+                            type: strainType, 
+                            description: strainDesc, 
+                            flavor: strainFlavor}
+                        )
+                        .then(function(res) {
                             expect(res).to.have.status(201);
                             expect(res.body).to.be.a('object');
                             strainId = res.body._id;
-                    })
-                }).then(function() {
-                    return chai.request(app).put(`/users/strains/${strainId}`).set('authorization', `Bearer ${token}`).then(function(res) {
-                        expect(res).to.have.status(200);
-                        expect(res.body).to.be.a('object');
-                    })
-                }).catch(function(err) {
+                        })
+                        .then(function() {
+                            return chai.request(app)
+                                .put(`/users/strains/${strainId}`)
+                                .set('authorization', `Bearer ${token}`)
+                                .then(function(res) {
+                                    expect(res).to.have.status(200);
+                                    expect(res.body).to.be.a('object');
+                                });
+                        })
+                        .catch(function(err) {
+                            if (err instanceof chai.AssertionError) {
+                                throw err;
+                            }
+                        });
+                })
+                .catch(function(err) {
                     if (err instanceof chai.AssertionError) {
                         throw err;
                     }
                 });
-            });
+        });
 
         //Login, create strain, add strain, & retreive strains
         it('Should login, create a strain, add a strain, & retreive strains', function() {
             let strainId;
 
-            return createUserAndLogin().then(function(token) {
-                    return chai.request(app).post('/strains').set('authorization', `Bearer ${token}`).send({
-                        name: strainName, 
-                        type: strainType, 
-                        description: strainDesc, 
-                        flavor: strainFlavor}
-                        ).then(function(res) {
+            return createUserAndLogin()
+                .then(function(token) {
+                    return chai.request(app)
+                        .post('/strains')
+                        .set('authorization', `Bearer ${token}`)
+                        .send({
+                            name: strainName, 
+                            type: strainType, 
+                            description: strainDesc, 
+                            flavor: strainFlavor}
+                        )
+                        .then(function(res) {
                             expect(res).to.have.status(201);
                             expect(res.body).to.be.a('object');
                             strainId = res.body._id;
-                    })
-                }).then(function() {
-                    return chai.request(app).put(`/users/strains/${strainId}`).set('authorization', `Bearer ${token}`).then(function(res) {
-                        expect(res).to.have.status(200);
-                        expect(res.body).to.be.a('object');
-                    })
-                }).then(function() {
-                    return chai.request(app).get(`/users/strains/`).set('authorization', `Bearer ${token}`).then(function(res) {
-                        expect(res).to.have.status(200);
-                        expect(res.body).to.be.a('object');
-                    })
-                }).catch(function(err) {
+                        })
+                        .then(function() {
+                            return chai.request(app)
+                                .put(`/users/strains/${strainId}`)
+                                .set('authorization', `Bearer ${token}`)
+                                .then(function(res) {
+                                    expect(res).to.have.status(200);
+                                    expect(res.body).to.be.a('object');
+                                });
+                        })
+                        .then(function() {
+                            return chai.request(app)
+                                .get(`/users/strains/`)
+                                .set('authorization', `Bearer ${token}`)
+                                .then(function(res) {
+                                    expect(res).to.have.status(200);
+                                    expect(res.body).to.be.a('object');
+                                });
+                        })
+                        .catch(function(err) {
+                            if (err instanceof chai.AssertionError) {
+                                throw err;
+                            }
+                        });
+                })
+                .catch(function(err) {
                     if (err instanceof chai.AssertionError) {
                         throw err;
                     }
@@ -311,27 +345,46 @@ describe('/users endpoints', function() {
         it('Should login, create a strain, add a strain, & delete a strain', function() {
             let strainId;
 
-            return createUserAndLogin().then(function(token) {
-                    return chai.request(app).post('/strains').set('authorization', `Bearer ${token}`).send({
-                        name: strainName, 
-                        type: strainType, 
-                        description: strainDesc, 
-                        flavor: strainFlavor}
-                        ).then(function(res) {
+            return createUserAndLogin()
+                .then(function(token) {
+                    return chai.request(app)
+                        .post('/strains')
+                        .set('authorization', `Bearer ${token}`)
+                        .send({
+                            name: strainName, 
+                            type: strainType, 
+                            description: strainDesc, 
+                            flavor: strainFlavor}
+                        )
+                        .then(function(res) {
                             expect(res).to.have.status(201);
                             expect(res.body).to.be.a('object');
                             strainId = res.body._id;
-                    })
-                }).then(function() {
-                    return chai.request(app).put(`/users/strains/${strainId}`).set('authorization', `Bearer ${token}`).then(function(res) {
-                        expect(res).to.have.status(200);
-                        expect(res.body).to.be.a('object');
-                    })
-                }).then(function() {
-                    return chai.request(app).delete(`/users/strains/${strainId}`).set('authorization', `Bearer ${token}`).then(function(res) {
-                        expect(res).to.have.status(204);
-                    })
-                }).catch(function(err) {
+                        })
+                        .then(function() {
+                            return chai.request(app)
+                                .put(`/users/strains/${strainId}`)
+                                .set('authorization', `Bearer ${token}`)
+                                .then(function(res) {
+                                    expect(res).to.have.status(200);
+                                    expect(res.body).to.be.a('object');
+                            });
+                        })
+                        .then(function() {
+                            return chai.request(app)
+                                .delete(`/users/strains/${strainId}`)
+                                .set('authorization', `Bearer ${token}`)
+                                .then(function(res) {
+                                    expect(res).to.have.status(204);
+                                });
+                        })
+                        .catch(function(err) {
+                            if (err instanceof chai.AssertionError) {
+                                throw err;
+                            }
+                        });
+                })
+                .catch(function(err) {
                     if (err instanceof chai.AssertionError) {
                         throw err;
                     }
