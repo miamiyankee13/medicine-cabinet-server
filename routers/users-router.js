@@ -98,7 +98,7 @@ router.post('/', jsonParser, (req, res) => {
             return Promise.reject({
                 code: 422,
                 reason: 'ValidationError',
-                message: 'username already taken',
+                message: 'Username already taken',
                 location: 'userName'
             });
         }
