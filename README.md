@@ -1,8 +1,8 @@
 # Medicine Cabinet
 
 ## Summary
-Medicine Cabinet allows users to keep track of medicinal cannabis strains.
-Users can store strains in the cabinet, allowing them to view strain details and post comments visible to the community. Users can also create a strain if it does not already exist in the database.
+Medicine Cabinet offers a simple, unique way to journal about & keep track of medicinal cannabis strains.
+What makes Medicine Cabinet special is the community aspect. The more each user shares the various experiences they have had with specific strains, the more information will be available to medical patients all over the world!
 
 ## Medicine Cabinet API Documentation
 [API Documentation](https://miamiyankee13.github.io/api-docs-medicine-cabinet/#introduction)
