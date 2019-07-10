@@ -2,7 +2,7 @@
 
 ## Summary
 Medicine Cabinet offers a simple, unique way to journal about & keep track of medicinal cannabis strains.
-What makes Medicine Cabinet special is the community aspect. The more each user shares the various experiences they have had with specific strains, the more information will be available to medical patients all over the world!
+What makes Medicine Cabinet special is the community aspect. The more each user shares the various experiences they have had with specific strains, the more information will be available to medical patients all over the world! This API can be easily accessed via the Medicine Cabinet [client](https://github.com/miamiyankee13/medicine-cabinet-react-client).
 
 ## Medicine Cabinet API Documentation
 [API Documentation](https://miamiyankee13.github.io/api-docs-medicine-cabinet/#introduction)
