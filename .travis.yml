@@ -1,0 +1,11 @@
+language: node_js
+node_js: node
+services:
+- mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: GO0ZSNC8jgctOZbb4uqEuF75wrZVuyfZuDqmE5O0L6WR+q0fSUEwuYwdy50ExpAk3Mlt+6Q0RrhTUb0S2CsBTjbY39PzwC9Fq0Jfi2fL+YZG9Rxv1UmqEQh9zqGDaYcXXyIAoe/sva5Iux9cH/EryakVyiBGFiFoAbbC2IezwK+C2itqKHEW4P8ghK0Hs7yiomZLF2I7NntNNzivSG9ZbnElHUuwpbK4SlzIkcaIL7bNHRfcnRrDsogrgvYCSKj7lDxBQcyQKkCbsEyTbNj9AD2JgSh5t3DGpdqM9kIrMzifk4lPr8bQBCuFXFiBhdOIpom9CwC45kLdS5SULWE8bD57Rixzeww/2MBi9RPkTH/aC42ROXVol9KrPacVg9asbido9liM2K7Y31+BxQ5BslCKKFN8+l6zC+jMDBqRwcacJdEG69iaSUNwfDSyEavN5JKN9A5buNxmQmQROxlzPKLUEgrXcpORRhLj9rq4aEv6AnS3GiyLLrfuUv1M49J+GaIgb9oJ3Xl6NZKk/o1u6q8hh9/WXwo1L+vu/hTXXhSpaylf/pnIjJRPrAT3ngqEyurR95ySypcfXoKNMAYaHDt5o8XQfPuO6bGQ7kKVENLrUX0RusuVquyYUlXiNOEjXQwXD5HujZPVqCp6k1AD8td6nFgoQpyEzRDOrWzMPC0=
+  app: medicine-cabinet-api
+  on:
+    repo: miamiyankee13/medicine-cabinet-server
