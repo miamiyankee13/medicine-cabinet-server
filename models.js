@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 //Configure mongoose to use ES6 promises & createIndex
 mongoose.Promise = global.Promise;    
 mongoose.set('useCreateIndex', true)
+mongoose.set('useFindAndModify', false);
 
 //Declare schema for comments model
 const commentSchema = mongoose.Schema({
